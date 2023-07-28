@@ -3,3 +3,11 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+start:
+    path: /default
+    controller: App\Controller\StartController::index
+
+image_parser:
+    path: /default/table
+    controller: App\Controller\ImageParserController::index
