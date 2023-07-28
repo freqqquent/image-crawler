@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="eu">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        Количество элементов:{{ totalImages }}
+        <br>
+        Общий размер картинок: {{ size }} байт
+        <br>
+        Общий размер картинок: {{ (size/1024)|number_format(3) }} килобайт
+        <br>
+        Общий размер картинок: {{ (size/1024/1024)|number_format(2) }} мегабайт
+
+        <table>
+            {% for row in urls|batch(4) %}
+                <tr>
+                {% for url in row %}
+                    <td>
+                        <img width="480" height="270" src="{{ url }}">
+                    </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
